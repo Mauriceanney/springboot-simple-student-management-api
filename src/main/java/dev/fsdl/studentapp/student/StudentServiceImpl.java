@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl implements StudentService{
 
+    private final StudentRepository studentRepository;
+
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     @Override
     public List<Student> getStudents() {
-        return Arrays.asList(
-                new Student(1L, "Jhon", "jhon@gmail.com", LocalDate.of(2000, Month.JANUARY, 6), 21)
-        );
+        return studentRepository.findAll();
     }
     
 }
