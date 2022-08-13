@@ -31,4 +31,13 @@ public class StudentServiceImpl implements StudentService{
         studentRepository.save(student);
     }
 
+    @Override
+    public void deleteStudent(Long id) {
+        boolean exist = studentRepository.existsById(id);
+        if(!exist){
+            throw new IllegalStateException("Student with id " + id + " does not exists");
+        }
+        studentRepository.deleteById(id);
+    }
+
 }
