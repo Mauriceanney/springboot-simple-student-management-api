@@ -9,4 +9,6 @@ public interface StudentService {
     void registerNewStudent(Student student);
 
     void deleteStudent(Long id);
+
+    void updateStudent(Long studentId, String name, String email);
 }
