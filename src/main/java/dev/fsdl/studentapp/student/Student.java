@@ -1,14 +1,12 @@
 package dev.fsdl.studentapp.student;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Student {
@@ -24,8 +22,14 @@ public class Student {
         generator = "student_sequence"
     )
     private Long id;
+
+    @NotBlank(message = "name must not be blank")
     private String name;
+
+    @NotBlank(message = "Email date must not be blank")
+    @Email
     private String email;
+
     private LocalDate dob;
     @Transient
     private Integer age;
